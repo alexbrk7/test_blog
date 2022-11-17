@@ -1,0 +1,152 @@
+<div>
+    <h1>Guest book</h1>
+    <div class="guestbook-table">
+      <H2>Added comments</H2>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+               class="mat-elevation-z8">
+
+          <!-- Id Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>
+              No.
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+
+          <!-- Image Column -->
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef>
+              Image
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="guestbook-image">
+                <img src="{{urlThumbs + element.image}}" alt="">
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+              Name
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>
+              Email
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <!-- Link Column -->
+          <ng-container matColumnDef="link">
+            <th mat-header-cell *matHeaderCellDef>
+              Website link
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+          </ng-container>
+
+          <!-- Comment Column -->
+          <ng-container matColumnDef="comment">
+            <th mat-header-cell *matHeaderCellDef>
+              Comment
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+          </ng-container>
+
+          <!-- User IP Column -->
+          <ng-container matColumnDef="user_ip">
+            <th mat-header-cell *matHeaderCellDef>
+              IP address
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.user_ip}} </td>
+          </ng-container>
+
+          <!-- User Browser Column -->
+          <ng-container matColumnDef="user_agent">
+            <th mat-header-cell *matHeaderCellDef>
+              Browser
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.user_agent}} </td>
+          </ng-container>
+
+          <!-- Date create Column -->
+          <ng-container matColumnDef="created_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date">
+              Date create
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+    </div>
+
+
+    <div class="guestbook-form">
+      <div class="form-wrp">
+        <H2>Leave a comment</H2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input formControlName="name" type="text"
+                   [ngClass]="{'form-control': true, 'error': f.name.invalid && (f.name.dirty || f.name.touched)}"
+                   class="form-control" id="exampleFormControlInput1" placeholder="Name">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Email address</label>
+            <input formControlName="email" type="email"
+                   [ngClass]="{'form-control': true, 'error': f.email.invalid && (f.email.dirty || f.email.touched)}"
+                   id="exampleFormControlInput2" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput3" class="form-label">Website link</label>
+            <input formControlName="link" type="text"
+                   [ngClass]="{'form-control': true, 'error': f.link.invalid && (f.link.dirty || f.link.touched)}"
+                   id="exampleFormControlInput3" placeholder="Website link">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea4" class="form-label">Comment</label>
+            <textarea formControlName="comment"
+                      [ngClass]="{'form-control': true, 'error': f.email.invalid && (f.email.dirty || f.email.touched)}"
+                      id="exampleFormControlTextarea4" rows="3"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea4" class="form-label">Image</label>
+            <div class="select-wrp">
+              <input
+                id="file"
+                type="file"
+                accept="image/png, image/gif, image/jpeg"
+                class="form-control"
+                (change)="onFileChange($event)"
+                #inputFile>
+              <button class="btn btn-danger" *ngIf="imageSrc" (click)="onFileClear()">Clear</button>
+            </div>
+            <img [src]="imageSrc" *ngIf="imageSrc" class="image-preview">
+          </div>
+              <div class="mb-3">
+                <ngx-recaptcha2 #captchaElem siteKey="6LfwWBMjAAAAADjSpuMwulD7aKFZ-EORNDozGJQA" (success)="handleSuccess($event)" [size]="size"
+                                [hl]="lang" [theme]="theme" [type]="type" formControlName="recaptcha">
+                </ngx-recaptcha2>
+              </div>
+          <button [disabled]="form.invalid" class="btn-submit btn btn-primary">Submit</button>
+        </form>
+        <notifier-container></notifier-container>
+      </div>
+    </div>
+
+  </div>
+

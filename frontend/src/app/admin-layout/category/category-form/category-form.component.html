@@ -1,0 +1,52 @@
+<div class="app-main__inner">
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div class="page-title-icon">
+          <i class="pe-7s-display1 icon-gradient bg-premium-dark">
+          </i>
+        </div>
+        <div>Add new category</div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel" aria-labelledby="#tab-0">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="main-card mb-3 card">
+            <div class="card-body"><h5 class="card-title">Category Form</h5>
+              <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="position-relative mb-3"><label for="title" class="form-label">Title</label><input
+                  formControlName="title"
+                  [ngClass]="{'form-control': true, 'error': f.title.invalid && (f.title.dirty || f.title.touched)}"
+                  id="title" placeholder="Enter title" type="text" class="form-control">
+                </div>
+                <div class="position-relative mb-3"><label for="slug"
+                                                           class="form-label">Slug</label>
+                  <input formControlName="slug"
+                         [ngClass]="{'form-control': true, 'error': f.slug.invalid && (f.slug.dirty || f.slug.touched)}"
+                         id="slug"
+                         placeholder="Enter slug"
+                         type="text"
+                         class="form-control">
+                </div>
+
+                <div class="position-relative mb-3">
+                  <label class="form-label">Content</label>
+                  <editor
+                    formControlName="content"
+                    [ngClass]="{'form-control': true, 'error': f.content.invalid && (f.content.dirty || f.content.touched)}"
+                    [init]="{ plugins: 'lists link image table code help wordcount' }"
+                  ></editor>
+                </div>
+                <button [disabled]="form.invalid" class="mt-1 btn btn-primary">Submit</button>
+                <notifier-container></notifier-container>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
