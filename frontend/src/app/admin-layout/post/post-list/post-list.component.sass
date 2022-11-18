@@ -1,6 +1,15 @@
-.post-image
-  img
-    width: 100%
-    max-width: 150px
-    height: auto
-    margin: 5px
+.mat-table
+  width: 100%
+  .mat-cell
+    .post-image
+      img
+        width: 100%
+        max-width: 150px
+        height: auto
+        margin: 5px
+      @media screen and (max-width: 960px)
+        img
+          width: 100%
+          max-width: 70px
+          padding: 0
+

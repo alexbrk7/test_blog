@@ -12,4 +12,55 @@
   width: 100%
 
 .mat-table
-    width: 100%
+  width: 100%
+  .mat-cell
+    .guestbook-image
+      img
+        width: 100%
+        max-width: 150px
+        height: auto
+        padding: 10px 10px 10px 0
+  @media screen and (max-width: 960px)
+    border: 0
+    vertical-align: middle
+    caption
+      font-size: 1em
+    .mat-header-row.mat-header-row.cdk-header-row.ng-star-inserted
+      padding: 0 24px
+    .mat-row
+      border-bottom: 5px solid #ddd
+      display: block
+
+    .mat-cell
+      border-bottom: 1px solid #ddd
+      display: flex
+      justify-content: space-between
+      align-items: center
+      font-size: 1em
+      text-align: right
+      height: 30px
+      margin-bottom: 0
+      padding: 0 24px
+      .guestbook-image,
+        img
+          width: 100%
+          max-width: 70px
+          padding: 0
+
+    .mat-cell:before
+      content: attr(aria-label)
+      content: attr(data-label)
+      float: left
+      text-transform: uppercase
+      font-weight: normal
+      font-size: .85em
+
+    .mat-cell:last-child
+      border-bottom: 0
+
+    .mat-cell:first-child
+      margin-top: 0
+
+
+
+
