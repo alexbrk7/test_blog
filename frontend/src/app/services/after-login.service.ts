@@ -9,7 +9,14 @@ import {TokenService} from "./token.service";
 export class AfterLoginService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return this.tokenService.loggedIn();
+    if(this.tokenService.loggedIn()) {
+      return this.tokenService.loggedIn();
+    }
+    if(!this.tokenService.loggedIn()) {
+      this.router.navigateByUrl('/');
+    }
+
+    return false;
   }
 
   constructor(private tokenService: TokenService, private router: Router) {
