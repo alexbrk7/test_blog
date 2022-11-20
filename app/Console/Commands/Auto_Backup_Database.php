@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class Auto_Backup_Database extends Command
 {
@@ -19,7 +20,7 @@ class Auto_Backup_Database extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Auto backup database every day at 00:00';
 
     /**
      * Create a new command instance.
@@ -48,5 +49,6 @@ class Auto_Backup_Database extends Command
         $output  = NULL;
 
         exec($command, $output, $returnVar);
+        //Log::info('Cron is working fine!');
     }
 }
