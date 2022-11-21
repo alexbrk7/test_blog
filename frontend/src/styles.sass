@@ -25,8 +25,10 @@
     vertical-align: middle
     caption
       font-size: 1em
-    .mat-header-row.mat-header-row.cdk-header-row.ng-star-inserted
+    .mat-header-row
       padding: 0 24px
+      .mat-sort-header
+        font-size: 0.85em
     .mat-row
       border-bottom: 5px solid #ddd
       display: block
@@ -38,7 +40,7 @@
       align-items: center
       font-size: 1em
       text-align: right
-      height: 30px
+      height: auto
       margin-bottom: 0
       padding: 0 24px
       .guestbook-image,
@@ -50,10 +52,15 @@
     .mat-cell:before
       content: attr(aria-label)
       content: attr(data-label)
-      float: left
+      min-width: 80px
+      text-align: left
       text-transform: uppercase
       font-weight: normal
       font-size: .85em
+      white-space: unset
+      overflow-wrap: break-word
+      word-wrap: break-word
+      word-break: break-word
 
     .mat-cell:last-child
       border-bottom: 0

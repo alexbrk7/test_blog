@@ -5,8 +5,57 @@ h1
   h2
     margin: 30px 0
 
+
+
+
+
+
+
+
+
 .mat-table
+  .mat-column-id
+    flex: 0 0 7%
+  .mat-column-image
+    flex: 0 0 8%
+  .mat-column-name
+    flex: 0 0 10%
+    white-space: unset
+    overflow-wrap: break-word
+    word-wrap: break-word
+    word-break: break-word
+  .mat-column-email,
+  .mat-column-link,
+  .mat-column-comment
+    flex: 0 0 14%
+    white-space: unset
+    overflow-wrap: break-word
+    word-wrap: break-word
+    word-break: break-word
+  .mat-column-user_ip,
+  .mat-column-browser,
+  .mat-column-created_at
+    flex: 0 0 12%
+    white-space: unset
+    overflow-wrap: break-word
+    word-wrap: break-word
+    word-break: break-word
+
+  .mat-column-name
+    color: black
+  .mat-column-created_at
+    color: black
   @media screen and (max-width: 960px)
+    .mat-column-id,
+    .mat-column-image,
+    .mat-column-name,
+    .mat-column-email,
+    .mat-column-link,
+    .mat-column-comment,
+    .mat-column-user_ip,
+    .mat-column-browser,
+    .mat-column-created_at
+      flex: 0 0 50%
     .mat-header-row
       .mat-header-cell
         display: none
