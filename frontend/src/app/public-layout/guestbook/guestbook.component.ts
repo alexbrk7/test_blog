@@ -32,6 +32,7 @@ export class GuestbookComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort
   @ViewChild('inputFile') myInputVariable: ElementRef;
 
+  defaultImage: string = environment.imgUrl + 'default/image/default-240x150.png';
   form: FormGroup;
   guestbook: Guestbook;
   guestbooks: Guestbook[];
@@ -102,7 +103,7 @@ export class GuestbookComponent implements OnInit {
       recaptcha: ['', Validators.required]
     })
   }
-  
+
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);

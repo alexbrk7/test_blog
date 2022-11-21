@@ -21,7 +21,7 @@
             </mat-header-cell>
             <mat-cell *matCellDef="let element" data-label="Image">
               <div class="guestbook-image">
-                <img src="{{urlThumbs + element.image}}" alt="">
+                <img src="{{element.image ? urlThumbs + element.image : defaultImage}}" alt="">
               </div>
             </mat-cell>
           </ng-container>
