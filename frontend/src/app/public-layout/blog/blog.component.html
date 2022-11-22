@@ -14,7 +14,7 @@
               </strong>
               <h2 class="card-title h4">{{post?.title}}</h2>
               <div class="small text-muted">{{post?.created_at}}</div>
-              <p class="card-text" [innerHTML]="post?.content.slice(0, 105)"></p>
+              <p class="card-text" [innerHTML]="post.content != null ? post?.content.slice(0, 105) : ''"></p>
               <a class="btn btn-primary" routerLink="/post/{{post?.id}}">Read more →</a>
             </div>
           </article>
