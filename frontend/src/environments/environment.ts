@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://devfabrika.ru/',
-  imgUrl: 'https://devfabrika.ru/storage/uploads/',
+  apiUrl: 'http://laravelblog.loc/',
+  imgUrl: 'http://laravelblog.loc/storage/uploads/',
 };
 
 /*
