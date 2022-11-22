@@ -47,25 +47,25 @@ class ImageSaver
                 $dst = 'uploads/' . $dir . '/image/';
 
                 // создаем изображение  качество 100%
-                if ($dir == 'category') $this->resize_off_height($path, $dst, 900, null, $ext);
+                if ($dir == 'category') $this->resize_off_height($path, $dst, 900, 563, $ext);
 
 
-                if ($dir == 'post') $this->resize_off_height($path, $dst, 900, null, $ext);
+                if ($dir == 'post') $this->resize_off_height($path, $dst, 900, 563, $ext);
 
 
-                if ($dir == 'guestbook') $this->resize_off_height($path, $dst, 500, null, $ext);
+                if ($dir == 'guestbook') $this->resize_off_height($path, $dst, 500, 200, $ext);
 
 
                 $dst = 'uploads/' . $dir . '/thumb/';
 
 
-                if ($dir == 'category') $this->resize_off_height($path, $dst, 150, null, $ext);
+                if ($dir == 'category') $this->resize_off_height($path, $dst, 150, 94, $ext);
 
 
-                if ($dir == 'post') $this->resize_off_height($path, $dst, 150, null, $ext);
+                if ($dir == 'post') $this->resize_off_height($path, $dst, 150, 94, $ext);
 
 
-                if ($dir == 'guestbook') $this->resize_off_height($path, $dst, 150, null, $ext);
+                if ($dir == 'guestbook') $this->resize_off_height($path, $dst, 150, 94, $ext);
 
             }
         }
